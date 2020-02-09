@@ -11,8 +11,8 @@ package edu.westga.cs6312.interfaces.model;
 
 public class RealEstate {
 	private String location;
-	private double landArea;
-	private double structureArea;
+	private int landArea;
+	private int structureArea;
 
 	/**
 	 * 3-parameter constructor for RealEstate objects
@@ -28,7 +28,7 @@ public class RealEstate {
 	 *
 	 *                      Postcondition:
 	 */
-	public RealEstate(String location, double landArea, double structureArea) {
+	public RealEstate(String location, int landArea, int structureArea) {
 		if (location == null) {
 			throw new IllegalArgumentException("Invalid location");
 		}
@@ -58,7 +58,7 @@ public class RealEstate {
 	 *                 Postcondition: 	a RealEstate object is created with
 	 *                 					structureArea set to zero
 	 */
-	public RealEstate(String location, double landArea) {
+	public RealEstate(String location, int landArea) {
 		this(location, landArea, 0);
 	}
 
@@ -72,7 +72,7 @@ public class RealEstate {
  *                      Postcondition: 	object will have new structure area if
 	 *                      			parameter sent is valid
 	 */
-	public void setStructureArea(double structureArea) {
+	public void setStructureArea(int structureArea) {
 		if (structureArea < 0) {
 			throw new IllegalArgumentException("Invalid structure area");
 		}
