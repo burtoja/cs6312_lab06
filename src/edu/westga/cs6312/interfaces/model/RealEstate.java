@@ -9,10 +9,10 @@ package edu.westga.cs6312.interfaces.model;
  *
  */
 
-public class RealEstate {
+public class RealEstate implements Appraisal{
 	private String location;
-	private int landArea;
-	private int structureArea;
+	private double landArea;
+	private double structureArea;
 
 	/**
 	 * 3-parameter constructor for RealEstate objects
@@ -24,11 +24,11 @@ public class RealEstate {
 	 *
 	 *                      Precondition: 	location != null 
 	 *                      				landArea > 0
-	 *                      				structureArea >= 0
+	 *                      				structureArea >= 0  && structureArea <= landArea
 	 *
 	 *                      Postcondition:
 	 */
-	public RealEstate(String location, int landArea, int structureArea) {
+	public RealEstate(String location, double landArea, double structureArea) {
 		if (location == null) {
 			throw new IllegalArgumentException("Invalid location");
 		}
@@ -37,6 +37,9 @@ public class RealEstate {
 		}
 		if (structureArea < 0) {
 			throw new IllegalArgumentException("Invalid structure area");
+		}
+		if (structureArea > landArea) {
+			throw new IllegalArgumentException("Structure area exceeds land area");
 		}
 		this.location = location;
 		this.landArea = landArea;
@@ -58,25 +61,31 @@ public class RealEstate {
 	 *                 Postcondition: 	a RealEstate object is created with
 	 *                 					structureArea set to zero
 	 */
-	public RealEstate(String location, int landArea) {
+	public RealEstate(String location, double landArea) {
 		this(location, landArea, 0);
 	}
 
 	/**
-	 * This method allows the structure area to be set for the object
+	 * This method allows a structure to be added to the land.  This method
+	 * adds the area of the new structure to the existing structure area for the 
+	 * RealEstate object.
 	 * 
 	 * @param structureArea
 	 *
- *                      Precondition: 	structureArea >= 0
+ *                      Precondition: 	structureArea >= 0  && structureArea <= landArea
 	 *
  *                      Postcondition: 	object will have new structure area if
 	 *                      			parameter sent is valid
 	 */
-	public void setStructureArea(int structureArea) {
+	public void addStructureArea(double structureArea) {
 		if (structureArea < 0) {
 			throw new IllegalArgumentException("Invalid structure area");
 		}
-		this.structureArea = structureArea;
+		double totalStructureArea = this.structureArea + structureArea;
+		if (totalStructureArea > this.landArea) {
+			throw new IllegalArgumentException("Total structure area excedes land area available");
+		}
+		this.structureArea += structureArea;
 	}
 
 	/**
@@ -92,5 +101,21 @@ public class RealEstate {
 	public String toString() {
 		return "Location: " + this.location + " -- Land Area: " + this.landArea + " sq. ft. -- Structure Area: "
 				+ this.structureArea + " sq. ft.";
+	}
+
+	/**
+	 * This method returns the estimate for the value of the total property.
+	 * Is uses the simple formula:
+	 * value = 100(structureArea) + 10(landArea)
+	 * 
+	 * @return	value of estimate
+	 *
+	 * Precondition:	none
+	 *
+	 * Postcondition:	no change to object
+	 */
+	@Override
+	public double getEstimate() {
+		return 100 * this.structureArea + 10 * this.landArea;
 	}
 }
