@@ -106,20 +106,56 @@ public class RealEstateTUI {
 		String location;
 		double landArea;
 		double structureArea;
+		location = this.askLocation();
+		landArea = this.askLandArea();
+		structureArea = this.askStructureArea(landArea);	
+		this.userRealEstate.add(new RealEstate(location, landArea, structureArea));
+	}
+	
+	/**
+	 * This method prompts user to enter the name of the location of the RealEstate
+	 * 
+	 * @return	string representation of the location
+	 */
+	private String askLocation() {
+		String location;
 		do {
 			System.out.print("Please enter the location of the real estate: ");
 			location = this.userInput.nextLine();
 		} while (location.equals(""));
+		return location;
+	}
+	
+	/**
+	 * This method prompts the user to enter the area of the RealEstate lot in square feet
+	 * 
+	 * @return 	value of the area of the land
+	 */
+	private double askLandArea() {
+		double landArea;
 		do {
 			System.out.print("Please enter the area in square feet of the lot: ");
 			landArea = Double.parseDouble(this.userInput.nextLine());
 		} while (landArea <= 0);
+		return landArea;
+	}
+	
+	/**
+	 * This method prompts the user to enter the area of the structure on the property
+	 * 
+	 * @param	landArea	Value of the area of the land of the RealEstate
+	 * 
+	 * @return	value of the area of the structure
+	 * 
+	 * @precondition	landArea > 0 (should be handled by askLandArea helper method prior)
+	 */
+	private double askStructureArea(double landArea) {
+		double structureArea;
 		do {
 			System.out.print("Please enter the area in square feet of the structure: ");
 			structureArea = Double.parseDouble(this.userInput.nextLine());
 		} while (structureArea < 0 || structureArea > landArea);
-		this.userRealEstate.add(new RealEstate(location, landArea, structureArea));
-		
+		return structureArea;
 	}
 	
 	/**

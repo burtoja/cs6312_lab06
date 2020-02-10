@@ -58,24 +58,4 @@ public class RealEstateWhenAddStructure {
 		String report = theRealEstate.toString();
 		assertEquals("Location: Frankfort -- Land Area: 43560.0 sq. ft. -- Structure Area: 1000.0 sq. ft.", report);
 	}
-	
-	/**
-	 * Test adding more structure area than available land area.  Expect exception.
-	 * 
-	 * Land Area: 5000
-	 * Original structure area: 4000
-	 * Added structure area: 2000
-	 * Expected exception: "Total structure area exceeds land area available"
-	 */
-	@Test
-	public void testAddMoreStructureAreaThanAvailableLandAreaExpectException() {
-		String report = "";
-		try {
-			RealEstate theRealEstate = new RealEstate("Columbus", 5000, 4000);
-			theRealEstate.addStructureArea(2000);
-		} catch (IllegalArgumentException exception) {
-			report = exception.getMessage();
-		}
-		assertEquals("Total structure area excedes land area available", report);
-	}
 }
