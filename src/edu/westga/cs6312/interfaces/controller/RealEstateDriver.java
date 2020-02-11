@@ -1,6 +1,3 @@
-/**
- * 
- */
 package edu.westga.cs6312.interfaces.controller;
 
 import edu.westga.cs6312.interfaces.view.RealEstateTUI;

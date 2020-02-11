@@ -16,7 +16,7 @@ import edu.westga.cs6312.interfaces.model.RealEstate;
 public class RealEstateWhenCreateRealEstate {
 
 	/**
-	 * Test 3-parameter constructor with the following values:
+	 * Test 3-parameter constructor with the following values (normal values):
 	 * 
 	 * location = Front Royal
 	 * landArea = 43560
@@ -28,7 +28,23 @@ public class RealEstateWhenCreateRealEstate {
 	public void testCreateNewRealEstate3ParameterInFrontRoyalWithLand43560Structure1200() {
 		RealEstate theRealEstate = new RealEstate("Front Royal", 43560, 1200);
 		String report = theRealEstate.toString();
-		assertEquals("Location: Front Royal -- Land Area: 43560.0 sq. ft. -- Structure Area: 1200.0 sq. ft.", report);
+		assertEquals("Location: Front Royal\tLand Area: 43560.0 sq.ft.\tStructure Area: 1200.0 sq.ft.", report);
+	}
+	
+	/**
+	 * Test 3-parameter constructor with the following values (lower boundary values):
+	 * 
+	 * location = Carlsbad
+	 * landArea = 0.01
+	 * structureArea = 0.01
+	 * 
+	 * Expect the above values reported 
+	 */
+	@Test
+	public void testCreateNewRealEstate3ParameterInCarlsbadWithLandP01StructureP01() {
+		RealEstate theRealEstate = new RealEstate("Carlsbad", 0.01, 0.01);
+		String report = theRealEstate.toString();
+		assertEquals("Location: Carlsbad\tLand Area: 0.01 sq.ft.\tStructure Area: 0.01 sq.ft.", report);
 	}
 	
 	/**
@@ -43,7 +59,7 @@ public class RealEstateWhenCreateRealEstate {
 	public void testCreateNewRealEstate2ParameterInMariettaWithLand43560NoStructure() {
 		RealEstate theRealEstate = new RealEstate("Marietta", 43560);
 		String report = theRealEstate.toString();
-		assertEquals("Location: Marietta -- Land Area: 43560.0 sq. ft. -- Structure Area: 0.0 sq. ft.", report);
+		assertEquals("Location: Marietta\tLand Area: 43560.0 sq.ft.\tStructure Area: 0.0 sq.ft.", report);
 	}
 	
 	/**
@@ -59,7 +75,7 @@ public class RealEstateWhenCreateRealEstate {
 	public void testCreateNewRealEstateLand10000Structure10000() {
 		RealEstate theRealEstate = new RealEstate("Montgomery", 10000, 10000);
 		String report = theRealEstate.toString();
-		assertEquals("Location: Montgomery -- Land Area: 10000.0 sq. ft. -- Structure Area: 10000.0 sq. ft.", report);
+		assertEquals("Location: Montgomery\tLand Area: 10000.0 sq.ft.\tStructure Area: 10000.0 sq.ft.", report);
 	}
 	
 	/**
@@ -75,6 +91,6 @@ public class RealEstateWhenCreateRealEstate {
 	public void testCreateNewRealEstateBlankLocationWithLand1Structure1() {
 		RealEstate theRealEstate = new RealEstate("", 1, 1);
 		String report = theRealEstate.toString();
-		assertEquals("Location:  -- Land Area: 1.0 sq. ft. -- Structure Area: 1.0 sq. ft.", report);
+		assertEquals("Location: \tLand Area: 1.0 sq.ft.\tStructure Area: 1.0 sq.ft.", report);
 	}
 }

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import edu.westga.cs6312.interfaces.model.RealEstate;
 
 /**
+ * This will serve as a test class for the RealEstate compareTo method
  * 
  * @author J. Allen Burton
  * @version Feb 10, 2020

@@ -46,16 +46,16 @@ public class RealEstateTUI {
 			this.displayMenu();
 			userChoice = this.getUserChoice();
 			switch (userChoice) {
-			case 1:
-				this.addRealEstate();
-				break;
-			case 2:
-				this.viewRealEstate();
-				break;
-			case 3:
-				break;
-			default:
-				System.out.println("Invalid choice. Please choose from the following options:");
+				case 1:
+					this.addRealEstate();
+					break;
+				case 2:
+					this.viewRealEstate();
+					break;
+				case 3:
+					break;
+				default:
+					System.out.println("Invalid choice. Please choose from the following options:");
 			}
 		} while (userChoice != 3);
 		System.out.println("Thank you for using the Real Estate Appraisal Application.");
@@ -171,7 +171,7 @@ public class RealEstateTUI {
 		Collections.sort(this.userRealEstate);
 		for (RealEstate current : this.userRealEstate) {
 			System.out.print(current.toString());
-			System.out.format(" Appraised Value: $%.2f. \n", current.getEstimate());
+			System.out.format("\tAppraised Value: $%.2f. \n", current.getEstimate());
 		}
 	}
 }

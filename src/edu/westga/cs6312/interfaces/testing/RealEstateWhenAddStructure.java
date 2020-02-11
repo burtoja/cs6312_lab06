@@ -1,6 +1,6 @@
 package edu.westga.cs6312.interfaces.testing;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +26,7 @@ public class RealEstateWhenAddStructure {
 		RealEstate theRealEstate = new RealEstate("Frankfort", 43560);
 		theRealEstate.addStructureArea(500);
 		String report = theRealEstate.toString();
-		assertEquals("Location: Frankfort -- Land Area: 43560.0 sq. ft. -- Structure Area: 500.0 sq. ft.", report);
+		assertEquals("Location: Frankfort\tLand Area: 43560.0 sq.ft.\tStructure Area: 500.0 sq.ft.", report);
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class RealEstateWhenAddStructure {
 		RealEstate theRealEstate = new RealEstate("Frankfort", 43560, 1000);
 		theRealEstate.addStructureArea(500);
 		String report = theRealEstate.toString();
-		assertEquals("Location: Frankfort -- Land Area: 43560.0 sq. ft. -- Structure Area: 1500.0 sq. ft.", report);
+		assertEquals("Location: Frankfort\tLand Area: 43560.0 sq.ft.\tStructure Area: 1500.0 sq.ft.", report);
 	}
 	
 	/**
@@ -56,6 +56,6 @@ public class RealEstateWhenAddStructure {
 		RealEstate theRealEstate = new RealEstate("Frankfort", 43560, 1000);
 		theRealEstate.addStructureArea(0);
 		String report = theRealEstate.toString();
-		assertEquals("Location: Frankfort -- Land Area: 43560.0 sq. ft. -- Structure Area: 1000.0 sq. ft.", report);
+		assertEquals("Location: Frankfort\tLand Area: 43560.0 sq.ft.\tStructure Area: 1000.0 sq.ft.", report);
 	}
 }

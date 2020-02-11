@@ -9,7 +9,7 @@ package edu.westga.cs6312.interfaces.model;
  *
  */
 
-public class RealEstate implements Appraisal, Comparable<RealEstate>{
+public class RealEstate implements Appraisal, Comparable<RealEstate> {
 	private String location;
 	private double landArea;
 	private double structureArea;
@@ -99,8 +99,8 @@ public class RealEstate implements Appraisal, Comparable<RealEstate>{
 	 */
 	@Override
 	public String toString() {
-		return "Location: " + this.location + " -- Land Area: " + this.landArea + " sq. ft. -- Structure Area: "
-				+ this.structureArea + " sq. ft.";
+		return "Location: " + this.location + "\tLand Area: " + this.landArea + " sq.ft.\tStructure Area: "
+				+ this.structureArea + " sq.ft.";
 	}
 
 	/**
