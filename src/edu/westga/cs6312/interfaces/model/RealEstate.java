@@ -1,8 +1,8 @@
 package edu.westga.cs6312.interfaces.model;
 
 /**
- * This class will model a piece of real estate keeping track of its
- * location, property area, and structure area
+ * This class will model a piece of real estate keeping track of its location,
+ * property area, and structure area. It will manage
  * 
  * @author J. Allen Burton
  * @version Feb 8, 2020
@@ -22,9 +22,8 @@ public class RealEstate implements Appraisal, Comparable<RealEstate> {
 	 * @param structureArea the area in square feet of the structure built on the
 	 *                      property (0 indicates no structure on property)
 	 *
-	 *                      Precondition: 	location != null 
-	 *                      				landArea > 0
-	 *                      				structureArea >= 0  && structureArea <= landArea
+	 *                      Precondition: location != null landArea > 0
+	 *                      structureArea >= 0 && structureArea <= landArea
 	 *
 	 *                      Postcondition:
 	 */
@@ -55,34 +54,33 @@ public class RealEstate implements Appraisal, Comparable<RealEstate> {
 	 * @param location the location of the piece of real estate
 	 * @param landArea the area in square feet of the property lot
 	 *
-	 *                 Precondition: 	location != null 
-	 *                 					landArea > 0
+	 *                 Precondition: location != null landArea > 0
 	 *
-	 *                 Postcondition: 	a RealEstate object is created with
-	 *                 					structureArea set to zero
+	 *                 Postcondition: a RealEstate object is created with
+	 *                 structureArea set to zero
 	 */
 	public RealEstate(String location, double landArea) {
 		this(location, landArea, 0);
 	}
 
 	/**
-	 * This method allows a structure to be added to the land.  This method
-	 * adds the area of the new structure to the existing structure area for the 
-	 * RealEstate object.
+	 * This method allows a structure to be added to the land. This method adds the
+	 * area of the new structure to the existing structure area for the RealEstate
+	 * object.
 	 * 
-	 * @param structureArea
+	 * @param structureArea the area of the structure to be added to the property
 	 *
- *                      Precondition: 	structureArea >= 0  && structureArea <= landArea
+	 *                      Precondition: structureArea >= 0 && structureArea <=
+	 *                      landArea
 	 *
- *                      Postcondition: 	object will have new structure area if
-	 *                      			parameter sent is valid
+	 *                      Postcondition: object will have new structure area if
+	 *                      parameter sent is valid
 	 */
 	public void addStructureArea(double structureArea) {
 		if (structureArea < 0) {
 			throw new IllegalArgumentException("Invalid structure area");
 		}
-		double totalStructureArea = this.structureArea + structureArea;
-		if (totalStructureArea > this.landArea) {
+		if ((this.structureArea + structureArea) > this.landArea) {
 			throw new IllegalArgumentException("Total structure area excedes land area available");
 		}
 		this.structureArea += structureArea;
@@ -93,9 +91,9 @@ public class RealEstate implements Appraisal, Comparable<RealEstate> {
 	 * 
 	 * @return string representation of object variables
 	 *
-	 *         			Precondition: none
+	 *         Precondition: none
 	 *
-	 *         			Postcondition: object is not changed
+	 *         Postcondition: object is not changed
 	 */
 	@Override
 	public String toString() {
@@ -104,15 +102,14 @@ public class RealEstate implements Appraisal, Comparable<RealEstate> {
 	}
 
 	/**
-	 * This method returns the estimate for the value of the total property.
-	 * Is uses the simple formula:
-	 * value = 100(structureArea) + 10(landArea)
+	 * This method returns the estimate for the value of the total property. Is uses
+	 * the simple formula: value = 100*(structureArea) + 10*(landArea)
 	 * 
-	 * @return	value of estimate
+	 * @return value of estimate
 	 *
-	 * Precondition:	none
+	 *         Precondition: none
 	 *
-	 * Postcondition:	no change to object
+	 *         Postcondition: no change to object
 	 */
 	@Override
 	public double getEstimate() {
@@ -123,15 +120,15 @@ public class RealEstate implements Appraisal, Comparable<RealEstate> {
 	 * This method compares this RealEstate object estimated value with another
 	 * 
 	 * 
-	 * @param propertyToCompare the RealEstate object to compare to this RealEstate object
+	 * @param propertyToCompare the RealEstate object to compare to this RealEstate
+	 *                          object
 	 * 
-	 * @return	-1 if this object is less valuable
-	 * 			0 if this object is of equal value
-	 * 			1 if this object is more valuable
+	 * @return -1 if this object is less valuable, 0 if this object is of equal
+	 *         value, or 1 if this object is more valuable
 	 *
-	 * Precondition:
+	 *         Precondition: propertyToCompare must be a valid RealEstate object
 	 *
-	 * Postcondition:
+	 *         Postcondition: no changes to either object
 	 */
 	@Override
 	public int compareTo(RealEstate propertyToCompare) {

@@ -19,7 +19,5 @@ public class RealEstateDriver {
 	public static void main(String[] args) {
 		RealEstateTUI userRealEstateTUI = new RealEstateTUI();
 		userRealEstateTUI.run();
-
 	}
-
 }

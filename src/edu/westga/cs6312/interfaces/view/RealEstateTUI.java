@@ -21,10 +21,10 @@ public class RealEstateTUI {
 	/**
 	 * This will serve as the constructor to create the TUI object
 	 *
-	 * Precondition: none
+	 * 		Precondition:	none
 	 *
-	 * Postcondition: RealEstateTUI is created with a new Scanner object for user
-	 * input and a new ArrayList of RealEstate objects ready to be populated.
+	 * 		Postcondition: 	RealEstateTUI is created with a new Scanner object for user
+	 * 						input and a new ArrayList of RealEstate objects ready to be populated.
 	 */
 	public RealEstateTUI() {
 		this.userInput = new Scanner(System.in);
@@ -32,12 +32,17 @@ public class RealEstateTUI {
 	}
 
 	/**
-	 * This method will serve to run the application
+	 * This method will serve to run the application. A welcome message is
+	 * displayed. A menu is presented to the user with three choices. User enters a
+	 * number (1-3) to select choice: 
+	 * 1 - User adds a new property to the list after entering in the requested information 
+	 * 2 - A list of properties (and information) is displayed ordered from least to greatest estimated value 
+	 * 3 - Quit the application A departing message is displayed at exit.
+	 * 
+	 * 		Precondition: 	none
 	 *
-	 * Precondition: none
-	 *
-	 * Postcondition: menu is displayed, choices are entered and executed, and
-	 * repeated until quit is chosen
+	 * 		Postcondition: 	menu is displayed, choices are entered and executed, and
+	 * 						repeated until quit is chosen
 	 */
 	public void run() {
 		System.out.println("Welcome to the Real Estate Appraisal Application.");
@@ -61,13 +66,13 @@ public class RealEstateTUI {
 		System.out.println("Thank you for using the Real Estate Appraisal Application.");
 
 	}
-	
+
 	/**
 	 * This method will display the menu of choices for the user
 	 *
-	 * Precondition: none
+	 * 		Precondition: 	none
 	 *
-	 * Postcondition: displayed menu to console
+	 * 		Postcondition: 	displayed menu to console
 	 */
 	private void displayMenu() {
 		System.out.println("\n\t-----------------------------------------");
@@ -76,32 +81,30 @@ public class RealEstateTUI {
 		System.out.println("\t| 3 - Quit                              |");
 		System.out.println("\t-----------------------------------------");
 	}
-	
+
 	/**
 	 * This method prompts the user to enter a number choice from the menu. The
 	 * choice entered by the user is returned by the method.
 	 * 
 	 * @return menu choice entered by the user
 	 *
-	 *         Precondition: choice must be an integer
+	 *         Precondition:	none
 	 *
-	 *         Postcondition: integer returned
+	 *         Postcondition: 	integer returned corresponding to user choice
 	 */
 	private int getUserChoice() {
 		System.out.println("Please choose an option from the above menu and type the number of your choice:");
 		return Integer.parseInt(this.userInput.nextLine());
 	}
-	
+
 	/**
 	 * This method will prompt the user to type information for the new real estate:
-	 * --location name
-	 * --land area
-	 * --structure area
-	 * The property information will then be added to the list of real estate
+	 * --location name --land area --structure area The property information will
+	 * then be added to the list of real estate
 	 *
-	 * Precondition: 
+	 * 		Precondition:	none
 	 *
-	 * Postcondition: 
+	 * 		Postcondition:	new RealEstate object is created with information supplied by user
 	 */
 	private void addRealEstate() {
 		String location;
@@ -109,14 +112,18 @@ public class RealEstateTUI {
 		double structureArea;
 		location = this.askLocation();
 		landArea = this.askLandArea();
-		structureArea = this.askStructureArea(landArea);	
+		structureArea = this.askStructureArea(landArea);
 		this.userRealEstate.add(new RealEstate(location, landArea, structureArea));
 	}
-	
+
 	/**
 	 * This method prompts user to enter the name of the location of the RealEstate
 	 * 
-	 * @return	string representation of the location
+	 * @return string representation of the location
+	 * 
+	 *         Precondition: none
+	 *
+	 *         Postcondition: no change to object
 	 */
 	private String askLocation() {
 		String location;
@@ -126,11 +133,16 @@ public class RealEstateTUI {
 		} while (location.equals(""));
 		return location;
 	}
-	
+
 	/**
-	 * This method prompts the user to enter the area of the RealEstate lot in square feet
+	 * This method prompts the user to enter the area of the RealEstate lot in
+	 * square feet
 	 * 
-	 * @return 	value of the area of the land
+	 * @return value of the area of the land
+	 * 
+	 *         Precondition: none
+	 *
+	 *         Postcondition: no change to object
 	 */
 	private double askLandArea() {
 		double landArea;
@@ -140,15 +152,19 @@ public class RealEstateTUI {
 		} while (landArea <= 0);
 		return landArea;
 	}
-	
+
 	/**
-	 * This method prompts the user to enter the area of the structure on the property
+	 * This method prompts the user to enter the area of the structure on the
+	 * property
 	 * 
-	 * @param	landArea	Value of the area of the land of the RealEstate
+	 * @param landArea Value of the area of the land of the RealEstate
 	 * 
-	 * @return	value of the area of the structure
+	 * @return value of the area of the structure
 	 * 
-	 * @precondition	landArea > 0 (should be handled by askLandArea helper method prior)
+	 *         Precondition: 	landArea > 0 (should be handled by askLandArea helper
+	 *         					method prior)
+	 *
+	 *         Postcondition: 	no change to object
 	 */
 	private double askStructureArea(double landArea) {
 		double structureArea;
@@ -158,14 +174,15 @@ public class RealEstateTUI {
 		} while (structureArea < 0 || structureArea > landArea);
 		return structureArea;
 	}
-	
+
 	/**
-	 * This method will print out a list of real estate properties showing 
-	 * each one's location, land area, and structure area.
+	 * This method will print out a list of real estate properties showing each
+	 * one's location, land area, and structure area.
 	 *
-	 * Precondition: none
+	 * 		Precondition: 	none
 	 *
-	 * Postcondition: printed list of RealEstate objects each listing location, land area, and structure area
+	 * 		Postcondition: 	list printed to screen of RealEstate objects each listing location,
+	 * 						land area, and structure area in order of increasing estimated value
 	 */
 	private void viewRealEstate() {
 		Collections.sort(this.userRealEstate);

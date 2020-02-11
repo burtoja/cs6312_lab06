@@ -11,14 +11,15 @@ package edu.westga.cs6312.interfaces.model;
 public interface Appraisal {
 	/**
 	 * This abstract method will be required in classes implementing the Appraisal
-	 * interface.  This method will need to return an appraisal value as appropriate
+	 * interface. This method will need to return an appraisal value as appropriate
 	 * for the implementing class.
 	 * 
-	 * @return	the value of the estimate
+	 * @return the value of the estimate
 	 *
-	 * Precondition:	none
+	 * Precondition: 	none
 	 *
-	 * Postcondition:	determined by implementing class
+	 * Postcondition: 	value of double returned determined by implementing
+	 *         			class
 	 */
 	double getEstimate();
 }
