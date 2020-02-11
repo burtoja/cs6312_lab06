@@ -1,6 +1,7 @@
 package edu.westga.cs6312.interfaces.view;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 import edu.westga.cs6312.interfaces.model.RealEstate;
@@ -167,6 +168,7 @@ public class RealEstateTUI {
 	 * Postcondition: printed list of RealEstate objects each listing location, land area, and structure area
 	 */
 	private void viewRealEstate() {
+		Collections.sort(this.userRealEstate);
 		for (RealEstate current : this.userRealEstate) {
 			System.out.print(current.toString());
 			System.out.format(" Appraised Value: $%.2f. \n", current.getEstimate());
