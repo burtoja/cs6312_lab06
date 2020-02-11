@@ -169,7 +169,7 @@ public class RealEstateTUI {
 	private void viewRealEstate() {
 		for (RealEstate current : this.userRealEstate) {
 			System.out.print(current.toString());
-			System.out.format(" Appraised Value: $%.2f.", current.getEstimate());
+			System.out.format(" Appraised Value: $%.2f. \n", current.getEstimate());
 		}
 	}
 }

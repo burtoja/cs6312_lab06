@@ -9,7 +9,7 @@ package edu.westga.cs6312.interfaces.model;
  *
  */
 
-public class RealEstate implements Appraisal{
+public class RealEstate implements Appraisal, Comparable<RealEstate>{
 	private String location;
 	private double landArea;
 	private double structureArea;
@@ -117,5 +117,30 @@ public class RealEstate implements Appraisal{
 	@Override
 	public double getEstimate() {
 		return 100 * this.structureArea + 10 * this.landArea;
+	}
+
+	/**
+	 * This method compares this RealEstate object estimated value with another
+	 * 
+	 * 
+	 * @param propertyToCompare the RealEstate object to compare to this RealEstate object
+	 * 
+	 * @return	-1 if this object is less valuable
+	 * 			0 if this object is of equal value
+	 * 			1 if this object is more valuable
+	 *
+	 * Precondition:
+	 *
+	 * Postcondition:
+	 */
+	@Override
+	public int compareTo(RealEstate propertyToCompare) {
+		int returnValue = 1;
+		if (this.getEstimate() == propertyToCompare.getEstimate()) {
+			returnValue = 0;
+		} else if (this.getEstimate() < propertyToCompare.getEstimate()) {
+			returnValue = -1;
+		}
+		return returnValue;
 	}
 }
